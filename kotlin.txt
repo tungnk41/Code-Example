@@ -1,0 +1,184 @@
+
+
+
+
+
+
+####################################
+class A {
+	val a : String =  null
+	set(value){
+		//Auto run when set value to a
+		field = value
+	}
+	get(){
+		//Auto run when get value from a
+		return field
+	}
+	<=>
+	get() = field
+
+
+	constructor(){
+
+	}
+
+	constructor(a : int){
+
+	}
+
+	init{
+		// This block alway execute before all constructor  
+		// execute 1st in order
+	}
+
+	init{
+		// This block alway execute before all constructor  
+		// execute 2nd in order
+	}
+
+	fun demo(param1: String = "default value", param2: String){
+
+	}
+}
+
+
+####################################
+
+Inheritance
+
+open class A{ //Need open to inheritance
+	open fun demo(){ //Need open to override
+
+	} 
+	
+}
+class B : A(){
+	override fun demo(){
+		super.demo()
+	}
+	
+}
+
+
+abstract class A{
+	abstract val a: String
+	abstract fun demo() // Don't have detail function, dont need open to override
+}
+
+####################################
+
+val stringLength  : Any = stringObject.length ?: "Null" => if length == null , stringLength = "Null"  (Eivis operator)
+
+
+as? => safe casting
+
+####################################
+
+Function Extension
+
+Entension function cannot execute if Class already has this impelment function 
+
+//Extend function for String class
+fun String.reverse(): String{
+	
+	return "Reverse String"
+}
+
+val expString : String = "Sample String"
+expString.reverse()
+
+
+
+####################################
+Class to mainly holding data
+
+data class User(val name: String, val age: Int)
+
+val a = User("a",1)
+val b = a.copy(name = "b")
+
+####################################
+
+enum class Month{JAN,FEB,MAY}
+
+val month : Month = Month.JAN
+print(month) => JAN String
+
+
+enum class Month(val month: Int){
+	JAN(1){
+			override fun getInfo() : String{
+				return ("${this.name} and ${this.month}") => show JAN and 1
+			}
+		}
+	},
+	FEB(2),
+	MAY(3);
+
+	abtract fun getInfo() : String
+}
+
+####################################
+
+"object" kotlin keyword (Java Anonymous Classes)
+
+open class Vehicle(){
+	open fun run(){
+		print("run")
+	}
+}
+
+//Override version
+val demoVehicle = object : Vehicle(){
+	override fun run(){
+		print("demoRun")
+	}
+}
+if(demoVehicle is Vehicle)
+
+
+val demoVehicle = object{
+	fun run(){
+		print("demoRun")
+	}
+}
+if(demoVehicle is Any)
+
+
+ <=> Java version :
+
++ Vehicle demoVehicle = new Vehicle(){
++ 	//override
++ 	public void run(){
++ 		print("demoRun")
++ 	}
++ }
+
+
+####################################
+Delegation of kotlin (by keyword)
+
+interface Engine{
+	fun run()
+}
+
+class ElectricEngine: Engine{
+	override fun run(){
+		"Electric run"
+	}
+}
+
+class DemoEngine (val engine : Engine){
+	fun run(){
+		engine.run()
+	}
+}
+
+=> Delegate kotlin version :
+
++ class DemoEngine (val engine : Engine) : Engine by engine
+
+
+demoEngine.run()
+
