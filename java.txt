@@ -1,0 +1,6 @@
+
+List<int[]> => int[][]
+list.toArray(new int[list.size()][]);
+
+list<Int> => int[]
+list.stream().mapToInt(i->i).toArray();
