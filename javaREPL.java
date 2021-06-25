@@ -1,5 +1,10 @@
 public class javaREPL{
     public static void main(String[] args) {
-        System.out.print("");
+        long timeStart = System.currentTimeMillis()
+
+
+
+        long runtime = System.currentTimeMillis() - timeStart
+        System.out.println("Execution time : " + runtime)
     }
 }
