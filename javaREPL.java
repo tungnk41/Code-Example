@@ -1,4 +1,7 @@
 import java.util.*;
+import java.lang.*
+
+
 public class javaREPL{
 
     public static void main(String[] args) {
