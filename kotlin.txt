@@ -140,6 +140,27 @@ enum class Month(val month: Int){
 	abtract fun getInfo() : String
 }
 
+
+
+enum class AppBackgroundColor(val intColor: Int, val displayString: String) {
+
+  GREEN(R.color.light_green, "Green"),
+  ORANGE(R.color.light_orange, "Orange"),
+  PURPLE(R.color.light_purple, "Purple");
+
+  companion object {
+    fun getColorByName(displayString: String) =
+        when (displayString) {
+          "Orange" -> ORANGE
+          "Purple" -> PURPLE
+          else -> GREEN
+        }
+  }
+}
+  private fun getCurrentBackgroundColorString(): String = notePrefs.getAppBackgroundColor().displayString
+
+  private fun getCurrentBackgroundColorInt(): Int = notePrefs.getAppBackgroundColor().intColor
+
 ####################################
 
 "object" kotlin keyword (Java Anonymous Classes)
